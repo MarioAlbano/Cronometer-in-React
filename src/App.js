@@ -5,23 +5,22 @@ class App extends Component {
     super(props);
     this.state = {
       number: 0,
-      timer: 0,
+      timer: null,
       buttonStart: "Go",
     };
     //binding functions
     this.startClock = this.startClock.bind(this);
     this.stopClock = this.stopClock.bind(this);
+    console.log(this.state.timer);
   }
 
   //clock start
   startClock() {
-    //Using a variable 'timer' to pause the timer with clearInterval.
-
-    if (this.timer !== null) {
+    if (this.timer != null) {
+      this.setState(this.state);
       clearInterval(this.timer);
       this.state.buttonStart = "Go";
       this.timer = null;
-      this.setState(this.state);
     } else {
       this.timer = setInterval(() => {
         let state = this.state;
